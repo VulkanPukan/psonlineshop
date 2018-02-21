@@ -1,0 +1,69 @@
+﻿@model shanuMVCUserRoles.Models.PagingModel
+@using shanuMVCUserRoles.Helpers
+@using shanuMVCUserRoles.Models
+@{
+    ViewBag.Title = "Home Page";
+   
+
+}
+@section Scripts{
+    <script src="~/Scripts/zoom.js"></script>
+    <script src="~/Scripts/tr.js"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script>
+        window.sr = ScrollReveal();
+        sr.reveal('.foo', { duration: 2000 });
+    </script>
+
+}
+<link href="~/Content/zoom.css" rel="stylesheet">
+<style>
+
+</style>
+
+<div class="container">
+
+    @*<div class="row">
+            @for (int j = 0; j < 5; j++)
+            {
+                <div class="col-sm-4">@Model[j].title</div>
+            }
+        </div>
+        <div class="row">
+            @for (int j = 5; j < 8; j++)
+            {
+                <div class="col-sm-4">@Model[j].title</div>
+            }
+        </div>
+        <div class="row">
+            @for (int j = 8; j < 12; j++)
+            {
+                <div class="col-sm-4">@Model[j].title</div>
+            }
+
+        </div>*@
+
+    <div class="row">
+
+        @foreach (var pr in @Model.Phones)
+        {
+            <div class="col-sm-4">
+                <div class="foo">
+                    <div class="itemBlock">
+                        @if (pr.imagePath != null)
+                        {
+                        <img src="@Url.Content(pr.imagePath)" />
+                        }
+                        <h3>@Html.ActionLink(pr.title, "Details", "ProductModels", new { id = pr.id }, "")</h3>
+                        <h4 style="color: green">@pr.price грн.</h4>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="btn-group" style="margin-top:7px;">
+        @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+    </div>
+
+</div>

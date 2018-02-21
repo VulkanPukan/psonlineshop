@@ -1,0 +1,40 @@
+﻿@model List<shanuMVCUserRoles.Models.ProductModel>
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search result for: @ViewBag.word</h2>
+<hr/>
+<style>
+    .card {
+        /* Add shadows to create the "card" effect */
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+        margin-bottom:5px;
+    }
+
+        /* On mouse-over, add a deeper shadow */
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+    /* Add some padding inside the card container */
+    .container {
+        padding: 2px 16px;
+    }
+</style>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-12" >
+            <a href="/ProductModels/Details/@item.id">
+                <div class="card">
+                    <div class="container">
+                        <h4><b>@item.title</b></h4>
+                        <p>@item.price грн</p>
+            </div>
+        </div>
+        </a>
+        </div>
+    }
+</div>

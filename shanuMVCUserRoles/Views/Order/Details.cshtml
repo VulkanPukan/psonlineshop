@@ -1,0 +1,49 @@
+﻿@model shanuMVCUserRoles.Models.OrderModel
+@using shanuMVCUserRoles.Models
+@{
+    ViewBag.Title = "Details";
+}
+<h2>Details</h2>
+
+<div class="row">
+    <div class="col"><h3>Name : @Model.customerName</h3></div>
+   
+    <div class="col">
+        <h3>Number : @Model.customerNumber</h3>
+    </div>
+    <div class="col">
+        <h3>Mail : @Model.customerMail</h3>
+    </div>
+
+</div>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.products)
+            {
+                <tr>
+                    <td>@item.title</td>
+                    <td>@item.price</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>
+<div class="row">
+    <div class="col-sm-11">
+        <div class="pull-right">
+            <h3>Total: <i style="color:green;"> @Model.total грн</i> </h3>
+            @Html.ActionLink("Доставлено", "Posted", "Order", new { id = Model.id }, new { @class = "btn btn-info pull-right" })
+        </div>
+    </div>
+</div>

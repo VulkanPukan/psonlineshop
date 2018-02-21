@@ -1,0 +1,62 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+body {
+    background: linear-gradient(to bottom right, #ededed, #d6d6d6);
+}
+.itemBlock {
+    width: 250px;
+    height: 350px;
+    justify-content: center;
+    margin-right: 3px;
+    margin-bottom: 3px;
+    margin-top: 13px;
+    border: solid 0.5px grey;
+    border-radius: 5px;
+    float: left;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    transition: all 200ms ease-out;
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+    transition-delay: 0s;
+}
+
+    .itemBlock:hover {
+        box-shadow: 0 6px 20px #8eb9ff;
+        transform: scale(1.05,1.05);
+    }
+
+
+
+    .itemBlock img {
+        position: relative;
+        min-height: 68%;
+        height: 69%;
+        max-height: 70%;
+        left: 100%; /* move the whole width of the image to the right */
+        margin-left: -200%; /* magic! */
+    }

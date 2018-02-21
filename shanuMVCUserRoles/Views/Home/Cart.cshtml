@@ -1,0 +1,93 @@
+﻿@model IEnumerable<shanuMVCUserRoles.Models.ProductModel>
+
+@{
+    ViewBag.Title = "Cart";
+    double count = 0;
+}
+
+<h2>Cart</h2>
+
+@if (Model.Count() == 0)
+{
+    @Html.ActionLink("Sorry but your cart is empty...  Back to shopping", "Index");
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Price</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ToList())
+                {
+                    <tr>
+                        <td>@item.title</td>
+                        <td>@item.price</td>
+                        <td>@Html.ActionLink("Delete", "DeleteFromCart", new { id = item.id })</td>
+                    </tr>
+                    count +=  item.price;
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-11">
+            <div class="pull-right">
+                <h3>Total: <i style="color:green;"> @count грн</i> </h3>
+            </div>
+        </div>
+    </div>
+    using (Html.BeginForm("AddOrder", "Order"))
+    {
+
+
+        for (int i = 0; i < Model.Count(); i++)
+        {
+            <input type="hidden" name="Orders" value="@Model.ToList()[i].id" />
+        }
+
+        @Html.Hidden("Count", count)
+        <div class="row">
+            <div class="col">
+
+                @Html.Label("Name: ")
+            </div>
+            <div class="col">
+                <input type="text" name="Name" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+
+                @Html.Label("Phone: ")
+            </div>
+            <div class="col">
+                <input type="text" name="Phone" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+
+                @Html.Label("Mail: ")
+            </div>
+            <div class="col">
+                <input type="text" name="Mail" class="form-control" />
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col">
+                <input type="submit" class="btn btn-success" title="Совершить заказ" />
+            </div>
+        </div>
+    }
+
+}
+
